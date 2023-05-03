@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.employeemanagementbe.employeemanagementbe.models.Employee;
@@ -66,6 +67,10 @@ public class EmployeeController {
     }
     
    
-
+    @GetMapping(value = "/search") //Not working
+    public List<Employee> searchEmployees(@RequestParam("keyword") String keyword){
+        List<Employee> employees = employeeRepo.searchEmployees(keyword);
+        return employees;
+    }
 
 }
