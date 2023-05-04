@@ -11,9 +11,6 @@ import com.employeemanagementbe.employeemanagementbe.models.Employee;
 @Repository
 public interface EmployeeRepo  extends JpaRepository<Employee,Integer>{
     
-    @Query("SELECT e FROM Employee e WHERE CONCAT(e.firstName, ' ', e.surname, ' ', e.email) LIKE %?1%")
-    // @Query("SELECT e FROM Employee e WHERE" + 
-    //        "e.department LIKE CONCAT('%',:keyword, '%')"+
-    //        "Or e.surname LIKE CONCAT('%', :keyword, '%')")
+    @Query("SELECT e FROM Employee e WHERE CONCAT(e.firstName,' ', e.surname, ' ', e.email, ' ', e.department, ' ', e.employeeNumber, ' ', e.middleName) LIKE %?1%")
     List<Employee> searchEmployees(String keyword);
 }
